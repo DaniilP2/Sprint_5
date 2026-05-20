@@ -1,24 +1,17 @@
 import pytest
-import os
-import sys
-directory = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(os.path.dirname(directory))
 from selenium import webdriver
-# from selenium.webdriver.support import expected_conditions as EC
-# from selenium.webdriver.support.wait import WebDriverWait
-from Sprint_5.test.credentials import *
-from Sprint_5.test.locators import *
-from Sprint_5.test.urls_const import *
-
+from Sprint_5.credentials import *
+from Sprint_5.locators import *
+from Sprint_5.urls_const import *
 
 
 # Фикстура инициализации драйвера Chrome
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
-    driver.maximize_window() # Раскрываем на весь экран
-    yield driver 
-    driver.quit() # Закрываем браузер ВО ВСЕХ ТЕСТАХ !!!
+    driver.maximize_window()  # Раскрываем на весь экран
+    yield driver
+    driver.quit()  # Закрываем браузер ВО ВСЕХ ТЕСТАХ !!!
 
 
 # Фикстура открытия главной страницы сайта
@@ -30,9 +23,9 @@ def open_main_page(driver):
 
 # Фикстура входа по кнопке «Войти в аккаунт» на главной странице сайта
 @pytest.fixture
-def open_main_page_login_page(driver): 
+def open_main_page_login_page(driver):
     driver.get(login_page)
-    
+
     # Ищем поля на странице Входа и проходим авторизацию
     driver.find_element(*Locators.enter_email_input).send_keys(Credentials.my_email)
     driver.find_element(*Locators.enter_password_input).send_keys(Credentials.my_password)
@@ -50,5 +43,5 @@ def open_register_page(driver):
 # Фикстура открытия страницы восстановления пароля
 @pytest.fixture
 def open_recovery_pass_page(driver):
-    driver.get(recovery_pass) 
+    driver.get(recovery_pass)
     return driver

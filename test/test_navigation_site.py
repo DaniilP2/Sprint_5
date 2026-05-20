@@ -6,9 +6,9 @@ sys.path.append(os.path.dirname(directory))
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from Sprint_5.test.credentials import *
-from Sprint_5.test.locators import *
-from Sprint_5.test.urls_const import *
+from Sprint_5.credentials import *
+from Sprint_5.locators import *
+from Sprint_5.urls_const import *
 
 
 # Тесты навигации по сайту
